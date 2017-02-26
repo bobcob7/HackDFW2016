@@ -32,7 +32,7 @@ function findBoothQR (req, res) {
   // });
   // console.log(qrcode);
   var qrcode = req.body.qrcode;
-  res.send(qrcode);
+  res.send('Your QRCode is ' + qrcode);
 }
 
 function send_items (req, res) {
