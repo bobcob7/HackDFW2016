@@ -24,7 +24,7 @@ public class QRCodeScanner extends Activity {
 	public void scanBar(View v) {
 		try {
 			Intent intent = new Intent(ACTION_SCAN);
-			intent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+			intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
 			startActivityForResult(intent, 0);
 		} catch (ActivityNotFoundException anfe) {
 			showDialog(QRCodeScanner.this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
@@ -68,6 +68,9 @@ public class QRCodeScanner extends Activity {
 			if (resultCode == RESULT_OK) {
 				String contents = intent.getStringExtra("SCAN_RESULT");
 				String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+				if(contents != "bobcob"){
+					scanBar(null);
+				}
 
 				Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
 				toast.show();
