@@ -1,9 +1,15 @@
 var express = require('express');
 var mysql = require('mysql');
+var connection = mysql.createConnection({
+  host : 'localhost',
+  user : 'root',
+  password : 'suedmeier',
+  database : 'parts_list'
+});
+
 var app = express();
 
-var db = require('./db');
-db.connect(function(err) {
+connection.connect(function(err) {
   if(!err) {
     console.log("Database is connected.\n");
   }
@@ -16,15 +22,21 @@ function confirm_request (req, res) {
   res.sendStatus(200);
 };
 
+function findBoothQR (req, res) {
+  // connection.query('SELECT * FROM booths WHERE )
+  var qrcode = req.param('qrcode');
+  console.log(qrcode);
+}
+
 function send_items (req, res) {
-  // res.send()
+  res.send()
 };
 
 app.get('/', confirm_request);
 
-app.get('/connect', function(req, res) {
-  // res.send()
-});
+app.post('/registerBoothQR/:id', findBoothQR);
 
 app.listen(3000);
 console.log('Listening on port 3000...');
+
+connection.end();
