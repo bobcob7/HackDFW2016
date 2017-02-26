@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical"
-    tools:context="com.javacodegeeks.androidstartactivityforresultexample.ActivityOne" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView1"
@@ -26,11 +25,11 @@
         android:layout_margin="10dp"
         android:gravity="center"
         android:onClick="scanQR"
-        android:text="QR Code"
+        android:text="Scan Booth"
         android:textSize="18dp" >
     </Button>
 
-    <Button
+<!--    <Button
         android:id="@+id/scanner2"
         android:layout_width="250dp"
         android:layout_height="80dp"
@@ -38,8 +37,8 @@
         android:layout_margin="10dp"
         android:gravity="center"
         android:onClick="scanBar"
-        android:text="Bar Code"
+        android:text="Scan Part"
         android:textSize="18dp" >
-    </Button>
+    </Button>-->
 
 </LinearLayout>

@@ -5,25 +5,9 @@ import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.hardware.Camera;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -53,9 +37,11 @@ import java.util.Vector;
 
 public class QRCodeScanner extends Activity implements SampleApplicationControl,
 		SampleAppMenuInterface {
+public class QRCodeScanner extends Activity {
 	/** Called when the activity is first created. */
 
 	static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
+	private boolean isRepeatedMode;
 	private static final String LOGTAG = "ImageTargets";
 	private DatabaseReference mDatabase;
 	private DatabaseReference boothRef;
@@ -119,39 +105,7 @@ public class QRCodeScanner extends Activity implements SampleApplicationControl,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		// Write a message to the database
-		mDatabase = FirebaseDatabase.getInstance().getReference();
-		FirebaseDatabase database = FirebaseDatabase.getInstance();
-		DatabaseReference myRef = database.getReference("Booth");
-		ArrayList<Part> partArrayList = new ArrayList<>();
-		ArrayList<Module> moduleArrayList = new ArrayList<>();
-		boothRef = mDatabase.child("booth");
-
-		Random rand = new Random();
-		for(int i=0;i<10;i++) {
-			int num = rand.nextInt(100000) + 9999;
-
-			Part part = new Part("part"+num);
-			partArrayList.add(part);
-
-		}
-
-		for(int i=0;i<10;i++) {
-			int num = rand.nextInt(100000) + 9999;
-
-			Module module1 = new Module("module"+num);
-			moduleArrayList.add(module1);
-
-		}
-		Module module1 = new Module();
-		module1.setPartsList(partArrayList);
-
-		Booth booth = new Booth();
-		booth.setModuleList(moduleArrayList);
-
-
-
-		boothRef.setValue(booth);
+		//boothTextView = (TextView) findViewById(R.id.);
 
 	}
 
@@ -650,6 +604,7 @@ public class QRCodeScanner extends Activity implements SampleApplicationControl,
 
 	public void scanBar(View v) {
 		try {
+			isRepeatedMode = true;
 			Intent intent = new Intent(ACTION_SCAN);
 			intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
 			startActivityForResult(intent, 0);
@@ -660,6 +615,7 @@ public class QRCodeScanner extends Activity implements SampleApplicationControl,
 
 	public void scanQR(View v) {
 		try {
+			isRepeatedMode = false;
 			Intent intent = new Intent(ACTION_SCAN);
 			intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
 			startActivityForResult(intent, 0);
@@ -695,14 +651,21 @@ public class QRCodeScanner extends Activity implements SampleApplicationControl,
 			if (resultCode == RESULT_OK) {
 				String contents = intent.getStringExtra("SCAN_RESULT");
 				String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
-				if(!contents.equals("bobcob")){
-					scanQR(null);
+				if(isRepeatedMode) {
+					if (!contents.equals("bobcob")) {
+						scanQR(null);
+					}
 				}
 
+				Toast toast = Toast.makeText(this, "Content:" + contents, Toast.LENGTH_LONG);
 				Bitmap overlay = BitmapFactory.decodeResource(null, R.id.button);
 				Bitmap.createBitmap(overlay,0,0,0,0);
 				Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
 				toast.show();
+				if(contents.equals("B1")) {
+					Intent itemIntent = new Intent(this, ItemActivity.class);
+					startActivity(itemIntent);
+				}
 			}
 		}
 	}

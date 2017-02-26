@@ -13,7 +13,7 @@
         android:id="@+id/locationLabel" />
 
     <TextView
-        android:text="TextView"
+        android:text="Pallet #4"
         android:textSize="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         android:id="@+id/itemsLeftLabel" />
 
     <TextView
-        android:text="TextView"
+        android:text="4"
         android:textSize="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,18 +40,8 @@
         android:layout_alignEnd="@+id/locationText"
         android:id="@+id/itemsLeftText" />
 
-    <Button
-        android:text="Scan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/itemsLeftText"
-        android:layout_alignEnd="@+id/itemsLeftText"
-        android:layout_marginTop="28dp"
-        android:id="@+id/scanButton"
-        android:layout_alignStart="@+id/itemsLeftLabel" />
-
     <TextView
-        android:text="TextView"
+        android:text="Part #1"
         android:textSize="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
