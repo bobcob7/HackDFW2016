@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var connection = mysql.createConnection({
   host : 'localhost',
@@ -8,6 +9,7 @@ var connection = mysql.createConnection({
 });
 
 var app = express();
+app.use(bodyParser.urlencoded({ extended:true }));
 
 connection.connect(function(err) {
   if(!err) {
@@ -23,9 +25,14 @@ function confirm_request (req, res) {
 };
 
 function findBoothQR (req, res) {
-  // connection.query('SELECT * FROM booths WHERE )
-  var qrcode = req.param('qrcode');
-  console.log(qrcode);
+  // var qrcode = req.param('qrcode');
+  // connection.query('SELECT * FROM booths WHERE Id = ?', qrcode, function(err, res) {
+  //   if (err) throw err;
+
+  // });
+  // console.log(qrcode);
+  var qrcode = req.body.qrcode;
+  res.send(qrcode);
 }
 
 function send_items (req, res) {
@@ -34,7 +41,7 @@ function send_items (req, res) {
 
 app.get('/', confirm_request);
 
-app.post('/registerBoothQR/:id', findBoothQR);
+app.post('/registerBoothQR/qrcode', findBoothQR);
 
 app.listen(3000);
 console.log('Listening on port 3000...');
