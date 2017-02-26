@@ -8,18 +8,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.firebase.database.DatabaseReference;
 
 public class QRCodeScanner extends Activity {
 	/** Called when the activity is first created. */
 
 	static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
-	private DatabaseReference mDatabase;
-	private DatabaseReference boothRef;
-	private TextView boothTextView;
 	private boolean isRepeatedMode;
 
 	@Override
@@ -88,8 +82,10 @@ public class QRCodeScanner extends Activity {
 
 				Toast toast = Toast.makeText(this, "Content:" + contents, Toast.LENGTH_LONG);
 				toast.show();
-				Intent itemIntent = new Intent(this, ItemActivity.class);
-				startActivity(itemIntent);
+				if(contents.equals("B1")) {
+					Intent itemIntent = new Intent(this, ItemActivity.class);
+					startActivity(itemIntent);
+				}
 			}
 		}
 	}
