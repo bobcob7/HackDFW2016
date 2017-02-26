@@ -26,7 +26,7 @@ function confirm_request (req, res) {
 
 function findBoothQR (req, res) {
   // var qrcode = req.body.qrcode;
-  connection.query('SELECT * FROM booths WHERE Id = ?', req.body,
+  connection.query('SELECT * FROM parts_list.booths WHERE Id = ?', req.body,
     function(err, result) {
       if (err) {
         console.log(result.insertId);
