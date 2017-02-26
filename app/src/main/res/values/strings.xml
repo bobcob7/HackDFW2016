@@ -4,5 +4,22 @@
     <string name="app_name">OpGuide</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="menu_back" />
+    <string name="menu_extended_tracking" />
+    <string name="menu_contAutofocus" />
+    <string name="menu_flash" />
+    <string name="menu_camera" />
+    <string name="menu_camera_front" />
+    <string name="menu_camera_back" />
+    <string name="menu_datasets" />
+    <string name="menu_flash_error_off" />
+    <string name="menu_flash_error_on" />
+    <string name="menu_contAutofocus_error_off" />
+    <string name="menu_contAutofocus_error_on" />
+    <string name="activities_list_title_string" />
+    <string name="activities_list_empty" />
+    <string name="content_desc_camera_button" />
+    <string name="splash_screen_description" />
+    <string name="INIT_LICENSE_ERROR_UNKNOWN_ERROR">boo</string>
 
 </resources>
