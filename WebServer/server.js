@@ -36,7 +36,7 @@ function findBoothQR (req, res) {
       else
       {
 	if(result.length > 0)
-		res.send('ID: ' + result[0].Id);
+		res.send(result[0].Id.toString());
   }
 });
   //console.log(qrcode);
