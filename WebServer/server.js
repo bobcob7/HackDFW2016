@@ -27,7 +27,7 @@ function confirm_request (req, res) {
 function findBoothQR (req, res) {
   // var qrcode = req.body.qrcode;
   console.log('SELECT * FROM booths WHERE Id='+req.body.qrcode);
-  connection.query('SELECT parts.Id FROM booths INNER JOIN modules INNER JOIN parts WHERE booths.Id=? AND FOUND!=1 LIMIT 1;', req.body.qrcode,
+  connection.query('SELECT parts.Id FROM booths INNER JOIN modules INNER JOIN parts WHERE booths.Id=? AND FOUND!=1 AND ASSIGNED!=1 LIMIT 1;', req.body.qrcode,
   function(err, result) {
       if (err) {
         console.log(result);
