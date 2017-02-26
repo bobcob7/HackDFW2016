@@ -26,15 +26,22 @@ function confirm_request (req, res) {
 
 function findBoothQR (req, res) {
   // var qrcode = req.body.qrcode;
-  connection.query('SELECT * FROM booths WHERE Id = ?', req.body,
+  console.log('SELECT * FROM booths WHERE Id='+req.body.qrcode);
+  connection.query('SELECT * FROM booths WHERE Id=?', req.body.qrcode,
     function(err, result) {
       if (err) {
-        console.log(result.insertId);
+        console.log(result);
         throw err;
       }
-      res.send('Your QRCode is ' + result.insertId);
-  });
-  console.log(qrcode);
+      else
+      {
+	for (var i in result) {
+        	console.log(result[i]);
+    	}
+	res.send('Your QRCode is ' + result.insertId);
+      }  
+});
+  //console.log(qrcode);
 }
 
 function send_items (req, res) {
@@ -48,4 +55,4 @@ app.post('/registerBoothQR/', findBoothQR);
 app.listen(3000);
 console.log('Listening on port 3000...');
 
-connection.end();
+//connection.end();
