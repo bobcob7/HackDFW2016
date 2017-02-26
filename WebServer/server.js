@@ -1,15 +1,22 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-  host : 'localhost',
-  user : 'root',
-  password : 'suedmeier',
-  database : 'parts_list'
-});
+// var mysql = require('mysql');
+var orm = require('orm');
+
+// var connection = mysql.createConnection({
+//   host : 'localhost',
+//   user : 'root',
+//   password : 'suedmeier',
+//   database : 'parts_list'
+// });
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended:true }));
+app.use(orm.express("mysql://root:suedmeier@localhost/parts_list", {
+  define function (db, models, next) {
+
+  }
+}));
 
 connection.connect(function(err) {
   if(!err) {
