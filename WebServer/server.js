@@ -25,11 +25,14 @@ function confirm_request (req, res) {
 };
 
 function findBoothQR (req, res) {
-  var qrcode = req.body.qrcode;
-  connection.query('SELECT * FROM booths WHERE Id = ?', qrcode,
-    function(err, res) {
-      // if (err) throw err;
-      res.end('Your QRCode is ' + qrcode);
+  // var qrcode = req.body.qrcode;
+  connection.query('SELECT * FROM booths WHERE Id = ?', req.body,
+    function(err, result) {
+      if (err) {
+        console.log(result.insertId);
+        throw err;
+      }
+      res.send('Your QRCode is ' + result.insertId);
   });
   console.log(qrcode);
 }
