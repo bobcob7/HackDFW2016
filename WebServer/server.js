@@ -27,18 +27,16 @@ function confirm_request (req, res) {
 function findBoothQR (req, res) {
   // var qrcode = req.body.qrcode;
   console.log('SELECT * FROM booths WHERE Id='+req.body.qrcode);
-  connection.query('SELECT * FROM booths WHERE Id=?', req.body.qrcode,
-    function(err, result) {
+  connection.query('SELECT parts.Id FROM booths INNER JOIN modules INNER JOIN parts WHERE booths.Id=? AND FOUND!=1 LIMIT 1;', req.body.qrcode,
+  function(err, result) {
       if (err) {
         console.log(result);
         throw err;
       }
       else
       {
-	for (var i in result) {
-        	console.log(result[i]);
-    	}
-	res.send('Your QRCode is ' + result.insertId);
+	if(results.length > 0)
+		res.send(results[0].Id);
       }  
 });
   //console.log(qrcode);
