@@ -29,7 +29,7 @@ function findBoothQR (req, res) {
   connection.query('SELECT * FROM booths WHERE Id = ?', qrcode,
     function(err, res) {
       // if (err) throw err;
-      res.send('Your QRCode is ' + qrcode);
+      res.end('Your QRCode is ' + qrcode);
   });
   console.log(qrcode);
 }
