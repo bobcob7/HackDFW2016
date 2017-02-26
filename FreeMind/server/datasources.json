@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "parts_list": {
+    "host": "localhost",
+    "port": 3003,
+    "url": "mysql://root:seugmeier@localhost/parts_list",
+    "database": "parts_list",
+    "password": "seugmeier",
+    "name": "parts_list",
+    "user": "root",
+    "connector": "mysql"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Booth",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "OnSite": {
+      "type": "string"
+    },
+    "Module": {
+      "type": "object",
+      "required": true,
+      "default": 1
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
