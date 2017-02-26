@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:text="Location"
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pickUpLabel"
+        android:layout_alignStart="@+id/pickUpLabel"
+        android:layout_marginTop="13dp"
+        android:id="@+id/locationLabel" />
+
+    <TextView
+        android:text="TextView"
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/locationLabel"
+        android:layout_alignStart="@+id/pickUpItem"
+        android:id="@+id/locationText" />
+
+    <TextView
+        android:text="Items left"
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/locationLabel"
+        android:layout_alignStart="@+id/locationLabel"
+        android:layout_marginTop="19dp"
+        android:id="@+id/itemsLeftLabel" />
+
+    <TextView
+        android:text="TextView"
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/itemsLeftLabel"
+        android:layout_alignEnd="@+id/locationText"
+        android:id="@+id/itemsLeftText" />
+
+    <Button
+        android:text="Scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/itemsLeftText"
+        android:layout_alignEnd="@+id/itemsLeftText"
+        android:layout_marginTop="28dp"
+        android:id="@+id/scanButton"
+        android:layout_alignStart="@+id/itemsLeftLabel" />
+
+    <TextView
+        android:text="TextView"
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pickUpItem"
+        android:layout_above="@+id/locationLabel"
+        android:layout_toEndOf="@+id/itemsLeftLabel"
+        android:layout_marginStart="13dp" />
+
+    <ImageView
+        android:src="@drawable/cube_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Pick up"
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="49dp"
+        android:id="@+id/pickUpLabel"
+        android:layout_below="@+id/imageView"
+        android:layout_alignStart="@+id/imageView" />
+</RelativeLayout>
