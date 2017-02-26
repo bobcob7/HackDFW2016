@@ -41,7 +41,7 @@ function send_items (req, res) {
 
 app.get('/', confirm_request);
 
-app.post('/registerBoothQR/qrcode', findBoothQR);
+app.post('/registerBoothQR/', findBoothQR);
 
 app.listen(3000);
 console.log('Listening on port 3000...');
