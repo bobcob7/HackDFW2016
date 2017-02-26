@@ -5,9 +5,22 @@ import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.hardware.Camera;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -37,7 +50,6 @@ import java.util.Vector;
 
 public class QRCodeScanner extends Activity implements SampleApplicationControl,
 		SampleAppMenuInterface {
-public class QRCodeScanner extends Activity {
 	/** Called when the activity is first created. */
 
 	static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
@@ -167,7 +179,7 @@ public class QRCodeScanner extends Activity {
 
 
 	// Called when the activity will start interacting with the user.
-	@Override
+	/*@Override
 	protected void onResume()
 	{
 		Log.d(LOGTAG, "onResume");
@@ -195,7 +207,7 @@ public class QRCodeScanner extends Activity {
 			mGlView.onResume();
 		}
 
-	}
+	}*/
 
 
 	// Callback for configuration changes the activity handles itself
@@ -210,7 +222,7 @@ public class QRCodeScanner extends Activity {
 
 
 	// Called when the system is about to start resuming a previous activity.
-	@Override
+	/*@Override
 	protected void onPause()
 	{
 		Log.d(LOGTAG, "onPause");
@@ -242,7 +254,7 @@ public class QRCodeScanner extends Activity {
 		{
 			Log.e(LOGTAG, e.getString());
 		}
-	}
+	}*/
 
 
 	// The final call you receive before your activity is destroyed.
@@ -657,9 +669,9 @@ public class QRCodeScanner extends Activity {
 					}
 				}
 
-				Toast toast = Toast.makeText(this, "Content:" + contents, Toast.LENGTH_LONG);
+				/*Toast toast = Toast.makeText(this, "Content:" + contents, Toast.LENGTH_LONG);
 				Bitmap overlay = BitmapFactory.decodeResource(null, R.id.button);
-				Bitmap.createBitmap(overlay,0,0,0,0);
+				Bitmap.createBitmap(overlay,0,0,0,0);*/
 				Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
 				toast.show();
 				if(contents.equals("B1")) {
