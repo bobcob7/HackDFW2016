@@ -35,11 +35,11 @@ function findBoothQR (req, res) {
       }
       else
       {
-	for (var i in result) {
-        	console.log(result[i]);
+        for (var i in result) {
+          console.log(result[i]);
     	}
-	res.send('Your QRCode is ' + result.insertId);
-      }  
+      res.send('Your QRCode is ' + result.insertId);
+  }
 });
   //console.log(qrcode);
 }
