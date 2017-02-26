@@ -21,7 +21,7 @@ public class QRCodeScanner extends Activity {
 		setContentView(R.layout.activity_main);
 	}
 
-	public void scanBar(View v) {
+	public void partQR(View v) {
 		try {
 			Intent intent = new Intent(ACTION_SCAN);
 			intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
@@ -31,7 +31,7 @@ public class QRCodeScanner extends Activity {
 		}
 	}
 
-	public void scanQR(View v) {
+	public void boothQR(View v) {
 		try {
 			Intent intent = new Intent(ACTION_SCAN);
 			intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
@@ -68,8 +68,8 @@ public class QRCodeScanner extends Activity {
 			if (resultCode == RESULT_OK) {
 				String contents = intent.getStringExtra("SCAN_RESULT");
 				String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
-				if(contents != "bobcob"){
-					scanBar(null);
+				if(!contents.equals("bobcob")){
+					partQR(null);
 				}
 
 				Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
